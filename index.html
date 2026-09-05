@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>오늘식단 - AI 음식 칼로리 분석</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- 섹션 1: 메인 히어로 -->
+    <section id="hero">
+        <div class="hero-content">
+            <h1>🥗 오늘식단</h1>
+            <p class="hero-subtitle">AI가 분석하는 나만의 맞춤 칼로리 가이드</p>
+            <p class="hero-desc">음식 이름과 양을 입력하면<br>칼로리, 영양소, 맞춤 조언까지 한번에!</p>
+            <a href="#input-section" class="btn-start">지금 분석하기 ↓</a>
+        </div>
+    </section>
+
+    <!-- 섹션 2: 입력 폼 -->
+    <section id="input-section">
+        <div class="container">
+            <h2>🍽️ 음식 정보 입력</h2>
+            <p class="section-desc">오늘 드신 음식을 알려주세요!</p>
+            
+            <div class="input-card">
+                <div class="input-group">
+                    <label for="food-name">🥘 음식 이름</label>
+                    <input 
+                        type="text" 
+                        id="food-name" 
+                        placeholder="예: 비빔밥, 삼겹살, 아메리카노"
+                    >
+                </div>
+                
+                <div class="input-group">
+                    <label for="food-amount">⚖️ 섭취량</label>
+                    <input 
+                        type="text" 
+                        id="food-amount" 
+                        placeholder="예: 1인분, 200g, 1컵"
+                    >
+                </div>
+
+                <button id="analyze-btn">
+                    🔍 AI 분석 시작
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 섹션 3: 결과 -->
+    <section id="result-section">
+        <div class="container">
+            <h2>📊 분석 결과</h2>
+            
+            <!-- 로딩 상태 -->
+            <div id="loading" style="display:none;">
+                <p>AI가 분석 중입니다...</p>
+            </div>
+
+            <!-- 결과 내용 -->
+            <div id="result-content"></div>
+
+            <!-- 초기 안내 -->
+            <div id="result-placeholder">
+                <p>ℹ️ 음식 정보를 입력하고 분석을 시작해보세요!</p>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>🥗 오늘식단 | AI 기반 음식 칼로리 분석 서비스</p>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

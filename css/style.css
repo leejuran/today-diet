@@ -1,0 +1,175 @@
+/* ===== 기본 설정 ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+/* ===== 헤더 ===== */
+header {
+  background: linear-gradient(135deg, #4CAF50, #2e7d32);
+  color: white;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+header p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+/* ===== 공통 컨테이너 ===== */
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ===== 입력 섹션 ===== */
+#input-section {
+  padding: 50px 0;
+}
+
+#input-section h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+  color: #2e7d32;
+}
+
+.input-card {
+  background: white;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #555;
+}
+
+.input-group input,
+.input-group select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+  outline: none;
+  border-color: #4CAF50;
+}
+
+.analyze-btn {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #4CAF50, #2e7d32);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.analyze-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(76,175,80,0.4);
+}
+
+/* ===== 결과 섹션 ===== */
+#result-section {
+  padding: 50px 0;
+  background: #f0f7f0;
+}
+
+#result-section h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+  color: #2e7d32;
+}
+
+.result-card {
+  background: white;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.result-item {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.result-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.result-item h3 {
+  font-size: 1rem;
+  color: #888;
+  margin-bottom: 8px;
+}
+
+.result-item p {
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+#result-calories {
+  font-size: 2rem !important;
+  font-weight: 700;
+  color: #4CAF50 !important;
+}
+
+#result-placeholder {
+  text-align: center;
+  padding: 40px;
+  color: #aaa;
+  font-size: 1rem;
+}
+
+/* ===== 로딩 ===== */
+.loading {
+  text-align: center;
+  padding: 40px;
+  color: #4CAF50;
+  font-size: 1.1rem;
+}
+
+/* ===== 푸터 ===== */
+footer {
+  background: #2e7d32;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
