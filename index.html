@@ -3,30 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>오늘식단 - AI 음식 칼로리 분석</title>
+    <meta name="description" content="오늘 먹은 음식의 영양 정보를 AI로 빠르게 확인하는 오늘식단">
+    <title>오늘식단 | AI 영양 가이드</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <header class="site-header">
+        <a class="brand" href="#home">오늘식단</a>
+        <nav aria-label="주요 메뉴">
+            <a href="#home">서비스 소개</a>
+            <a href="#analyzer">AI 분석</a>
+            <a href="#guide">이용 안내</a>
+        </nav>
+    </header>
 
+    <main>
     <!-- 섹션 1: 메인 히어로 -->
-    <section id="hero">
+    <section id="home" class="hero">
         <div class="hero-content">
-            <h1>🥗 오늘식단</h1>
-            <p class="hero-subtitle">AI가 분석하는 나만의 맞춤 칼로리 가이드</p>
-            <p class="hero-desc">음식 이름과 양을 입력하면<br>칼로리, 영양소, 맞춤 조언까지 한번에!</p>
-            <a href="#input-section" class="btn-start">지금 분석하기 ↓</a>
+            <p class="eyebrow">DAILY FOOD CHECK</p>
+            <h1>오늘의 한 끼를<br><em>더 잘 이해하는 시간</em></h1>
+            <p class="hero-desc">음식 이름과 섭취량을 입력하면 AI가 칼로리, 주요 영양소, 식단 팁을 한눈에 정리해드려요.</p>
+            <a href="#analyzer" class="btn-start">지금 분석하기 <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="hero-note" aria-label="서비스 특징">
+            <span>01</span><strong>빠른 분석</strong><p>입력 후 잠시만 기다리면<br>식탁 위 정보가 정리됩니다.</p>
         </div>
     </section>
 
     <!-- 섹션 2: 입력 폼 -->
-    <section id="input-section">
+    <section id="analyzer" class="section section-paper">
         <div class="container">
-            <h2>🍽️ 음식 정보 입력</h2>
-            <p class="section-desc">오늘 드신 음식을 알려주세요!</p>
+            <div class="section-heading"><p class="eyebrow">AI NUTRITION GUIDE</p><h2>먹은 음식을<br>간단히 기록해보세요</h2><p class="section-desc">정확한 양을 입력할수록 더 현실적인 추정치를 받을 수 있어요.</p></div>
             
-            <div class="input-card">
+            <form id="food-form" class="input-card">
                 <div class="input-group">
-                    <label for="food-name">🥘 음식 이름</label>
+                    <label for="food-name">음식 이름</label>
                     <input 
                         type="text" 
                         id="food-name" 
@@ -35,7 +47,7 @@
                 </div>
                 
                 <div class="input-group">
-                    <label for="food-amount">⚖️ 섭취량</label>
+                    <label for="food-amount">섭취량</label>
                     <input 
                         type="text" 
                         id="food-amount" 
@@ -43,36 +55,49 @@
                     >
                 </div>
 
-                <button id="analyze-btn">
-                    🔍 AI 분석 시작
+                <button id="analyze-btn" class="analyze-btn" type="submit">
+                    AI 분석 시작 <span aria-hidden="true">→</span>
                 </button>
-            </div>
+                <p id="form-message" class="form-message" role="alert" aria-live="polite"></p>
+            </form>
         </div>
     </section>
 
     <!-- 섹션 3: 결과 -->
-    <section id="result-section">
+    <section id="result-section" class="section result-section" aria-live="polite">
         <div class="container">
-            <h2>📊 분석 결과</h2>
+            <div class="section-heading"><p class="eyebrow">YOUR RESULT</p><h2>오늘식단의 분석</h2></div>
             
             <!-- 로딩 상태 -->
-            <div id="loading" style="display:none;">
-                <p>AI가 분석 중입니다...</p>
+            <div id="loading" class="loading" hidden>
+                <p>AI가 식단을 읽고 있어요...</p>
             </div>
 
             <!-- 결과 내용 -->
             <div id="result-content"></div>
 
             <!-- 초기 안내 -->
-            <div id="result-placeholder">
-                <p>ℹ️ 음식 정보를 입력하고 분석을 시작해보세요!</p>
+            <div id="result-placeholder" class="result-placeholder">
+                <p>아직 분석 결과가 없습니다.</p><span>위 입력창에서 오늘 먹은 음식을 기록해보세요.</span>
             </div>
 
         </div>
     </section>
 
+    <section id="guide" class="section guide-section">
+        <div class="container guide-grid">
+            <div><p class="eyebrow">HOW IT WORKS</p><h2>부담 없이,<br>세 단계로 확인해요</h2></div>
+            <ol class="steps">
+                <li><span>01</span><div><strong>음식과 양 입력</strong><p>메뉴명과 대략적인 섭취량을 적어요.</p></div></li>
+                <li><span>02</span><div><strong>AI가 영양 정보 분석</strong><p>서버에서 안전하게 AI API를 호출해요.</p></div></li>
+                <li><span>03</span><div><strong>결과를 식단에 참고</strong><p>결과는 의료 진단이 아닌 참고용 정보예요.</p></div></li>
+            </ol>
+        </div>
+    </section>
+    </main>
+
     <footer>
-        <p>🥗 오늘식단 | AI 기반 음식 칼로리 분석 서비스</p>
+        <p>오늘식단 · AI 기반 음식 영양 가이드</p>
     </footer>
 
     <script src="js/app.js"></script>
