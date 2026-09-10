@@ -34,7 +34,7 @@ class handler(BaseHTTPRequestHandler):
         request_to_ai = urllib.request.Request(url, data=body, headers={"Content-Type": "application/json"})
 
         try:
-            with urllib.request.urlopen(request_to_ai, timeout=18) as response:
+            with urllib.request.urlopen(request_to_ai, timeout=25) as response:
                 data = json.loads(response.read().decode("utf-8"))
             candidates = data.get("candidates", [])
             if not candidates:

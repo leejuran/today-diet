@@ -30,7 +30,7 @@ async function analyzeFood(event) {
 
 	try {
 		const controller = new AbortController();
-		timeout = setTimeout(() => controller.abort(), 20000);
+		timeout = setTimeout(() => controller.abort(), 28000);
 		const response = await fetch("/api/analyze", {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
