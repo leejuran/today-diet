@@ -62,6 +62,9 @@ class handler(BaseHTTPRequestHandler):
     def _provider_error(error):
         try:
             payload = json.loads(error.read().decode("utf-8"))
-            return payload.get("error", {}).get("status", f"HTTP {error.code}")
+            provider_error = payload.get("error", {})
+            status = provider_error.get("status", f"HTTP {error.code}")
+            message = provider_error.get("message", "")
+            return f"{status} - {message}" if message else status
         except (AttributeError, UnicodeDecodeError, json.JSONDecodeError):
             return f"HTTP {error.code}"
