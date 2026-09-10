@@ -37,8 +37,12 @@ class handler(BaseHTTPRequestHandler):
             with urllib.request.urlopen(request_to_ai, timeout=18) as response:
                 data = json.loads(response.read().decode("utf-8"))
             result = data["candidates"][0]["content"]["parts"][0]["text"]
-        except (urllib.error.URLError, KeyError, IndexError, json.JSONDecodeError):
-            self._send_json({"error": "AI 분석에 실패했습니다. 잠시 후 다시 시도해주세요."}, 502)
+        except urllib.error.HTTPError as error:
+            error_message = self._provider_error(error)
+            self._send_json({"error": f"Gemini API 오류: {error_message}"}, 502)
+            return
+        except (urllib.error.URLError, TimeoutError, KeyError, IndexError, json.JSONDecodeError):
+            self._send_json({"error": "AI 분석에 실패했습니다. Vercel 로그를 확인해주세요."}, 502)
             return
 
         self._send_json({"food": food, "result": result}, 200)
@@ -53,3 +57,11 @@ class handler(BaseHTTPRequestHandler):
         self.send_header("Content-Length", str(len(encoded_body)))
         self.end_headers()
         self.wfile.write(encoded_body)
+
+    @staticmethod
+    def _provider_error(error):
+        try:
+            payload = json.loads(error.read().decode("utf-8"))
+            return payload.get("error", {}).get("status", f"HTTP {error.code}")
+        except (AttributeError, UnicodeDecodeError, json.JSONDecodeError):
+            return f"HTTP {error.code}"
