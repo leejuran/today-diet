@@ -4,13 +4,13 @@
 
 ## 제출 정보
 
-- 배포 URL: `Vercel 배포 후 실제 주소로 교체하세요`
+- 배포 URL: https://today-diet.vercel.app/
 - GitHub: https://github.com/leejuran/today-diet
 - 기획서: [docs/service-plan.md](docs/service-plan.md)
 - 증빙 체크리스트: [docs/evidence-checklist.md](docs/evidence-checklist.md)
 - 스크린샷: [docs/screenshots](docs/screenshots)
 
-> 현재 저장소에는 로컬 화면과 입력 검증 캡처가 포함되어 있습니다. 배포가 끝나면 위 배포 URL과 AI 정상 결과 캡처를 반드시 갱신하세요.
+> 배포 서비스: https://today-diet.vercel.app/
 
 ## 주요 기능
 
