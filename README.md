@@ -10,7 +10,6 @@
 - 증빙 체크리스트: [docs/evidence-checklist.md](docs/evidence-checklist.md)
 - 스크린샷: [docs/screenshots](docs/screenshots)
 
-> 배포 서비스: https://today-diet.vercel.app/
 
 ## 주요 기능
 
