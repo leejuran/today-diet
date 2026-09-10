@@ -30,7 +30,7 @@ class handler(BaseHTTPRequestHandler):
 
         prompt = f"""음식: {food}\n섭취량: {amount}\n\n한국어로 다음 형식에 맞춰 간결하게 분석해주세요. 의료 진단이 아닌 참고 정보임을 포함하세요.\n\n[칼로리]\n[영양성분] 탄수화물, 단백질, 지방, 나트륨\n[오늘의 팁] 실천 가능한 팁 2가지\n[참고] 추정치의 한계"""
         body = json.dumps({"contents": [{"parts": [{"text": prompt}]}]}).encode("utf-8")
-        url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash-lite:generateContent?key=" + api_key
+        url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=" + api_key
         request_to_ai = urllib.request.Request(url, data=body, headers={"Content-Type": "application/json"})
 
         try:
