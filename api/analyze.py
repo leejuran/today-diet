@@ -50,8 +50,14 @@ class handler(BaseHTTPRequestHandler):
         except ValueError as error:
             self._send_json({"error": f"Gemini 응답 오류: {error}"}, 502)
             return
-        except (urllib.error.URLError, TimeoutError, json.JSONDecodeError):
-            self._send_json({"error": "AI 분석에 실패했습니다. 네트워크 또는 응답 형식을 확인해주세요."}, 502)
+        except urllib.error.URLError as error:
+            self._send_json({"error": f"Gemini 네트워크 오류: {error.reason}"}, 502)
+            return
+        except TimeoutError:
+            self._send_json({"error": "Gemini 응답 시간이 초과되었습니다."}, 504)
+            return
+        except json.JSONDecodeError:
+            self._send_json({"error": "Gemini 응답을 JSON으로 해석할 수 없습니다."}, 502)
             return
 
         self._send_json({"food": food, "result": result}, 200)
