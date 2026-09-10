@@ -36,13 +36,22 @@ class handler(BaseHTTPRequestHandler):
         try:
             with urllib.request.urlopen(request_to_ai, timeout=18) as response:
                 data = json.loads(response.read().decode("utf-8"))
-            result = data["candidates"][0]["content"]["parts"][0]["text"]
+            candidates = data.get("candidates", [])
+            if not candidates:
+                raise ValueError("생성된 답변이 없습니다.")
+            parts = candidates[0].get("content", {}).get("parts", [])
+            result = "\n".join(part.get("text", "") for part in parts).strip()
+            if not result:
+                raise ValueError("답변 본문이 비어 있습니다.")
         except urllib.error.HTTPError as error:
             error_message = self._provider_error(error)
             self._send_json({"error": f"Gemini API 오류: {error_message}"}, 502)
             return
-        except (urllib.error.URLError, TimeoutError, KeyError, IndexError, json.JSONDecodeError):
-            self._send_json({"error": "AI 분석에 실패했습니다. Vercel 로그를 확인해주세요."}, 502)
+        except ValueError as error:
+            self._send_json({"error": f"Gemini 응답 오류: {error}"}, 502)
+            return
+        except (urllib.error.URLError, TimeoutError, json.JSONDecodeError):
+            self._send_json({"error": "AI 분석에 실패했습니다. 네트워크 또는 응답 형식을 확인해주세요."}, 502)
             return
 
         self._send_json({"food": food, "result": result}, 200)
